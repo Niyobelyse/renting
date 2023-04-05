@@ -1,11 +1,21 @@
+
+
 /* Bodyimage */
 .Bodyimage{
-    background-image: url('../public/Capture1.PNG');
+    background-image: url('..//public/Capture1.PNG');
+    height: 400px;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 400px;
-    margin-bottom: 400px;
+    
 
+}
+.Bodyimage img{
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+
+
+  
 }
 /* footer */
 .spancolor{
@@ -15,4 +25,8 @@
 .bodybutton{
     background-color: white;
     opacity: 10px;
+}
+/* above the cards */
+.links{
+    color: #575757;
 }
