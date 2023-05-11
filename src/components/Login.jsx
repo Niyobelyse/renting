@@ -1,100 +1,184 @@
-import React from 'react';
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import { styled } from '@mui/material/styles';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import { Link } from 'react-router-dom';
 
-export default function Login() {
-    return (
-        <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialogContent-root': {
+    padding: theme.spacing(2),
+  },
+  '& .MuiDialogActions-root': {
+    padding: theme.spacing(1),
+  },
+}));
+
+function BootstrapDialogTitle(props) {
+  const { children, onClose, ...other } = props;
+
+  return (
+    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+      {children}
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            position: 'absolute',
+            left: 420,
+            top: 8,
+          
+            
+            color: (theme) => theme.palette.black,
+          }}
+        >
+          <CloseIcon/>
+        </IconButton>
+      ) : null}
+    </DialogTitle>
+  );
+}
+
+BootstrapDialogTitle.propTypes = {
+  children: PropTypes.node,
+  onClose: PropTypes.func.isRequired,
+};
+
+export default function SignIN() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div >
+      <span variant="outlined" onClick={handleClickOpen}>
+      <button type="button" class="text-white bg-blue-900 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Login</button>
+        
+      </span>
+      <BootstrapDialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+        className='h-screen w-full mt-24'
+      >
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+  
+        </BootstrapDialogTitle>
+        <div className="relative flex flex-col justify-center  overflow-hidden">
               
-            <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-60 w-10 h-10">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"  />
-</svg>
-                <h1 className="text-3xl font-semibold text-center text-blue-700 uppercase">
-                    Sign in
-                </h1>
-                <form className="mt-6">
-                    <div className="mb-2">
-                        <label
-                            for="email"
-                            className="block text-sm font-semibold text-gray-800"
-                        >
-                            Email
-                        </label>
-                        <input
-                            type="email"
-                            className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                        />
-                    </div>
-                    <div className="mb-2">
-                        <label
-                            for="password"
-                            className="block text-sm font-semibold text-gray-800"
-                        >
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                        />
-                    </div>
-                    <a
-                        href="#"
-                        className="text-xs text-blue-700 hover:underline"
-                    >
-                        Forget Password?
-                    </a>
-                    <div className="mt-6">
-                        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-purple-600">
-                            Login
-                        </button>
-                    </div>
-                </form>
-                <div className="relative flex items-center justify-center w-full mt-6 border border-t">
-                    <div className="absolute px-5 bg-white">Or</div>
-                </div>
-                <div className="flex mt-4 gap-x-2">
-                    <button
-                        type="button"
-                        className="flex items-center justify-center w-full p-2 border border-gray-600 rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-violet-600"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 32 32"
-                            className="w-5 h-5 fill-current"
-                        >
-                            <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
-                        </svg>
-                    </button>
-                    <button className="flex items-center justify-center w-full p-2 border border-gray-600 rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-violet-600">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 32 32"
-                            className="w-5 h-5 fill-current"
-                        >
-                            <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"></path>
-                        </svg>
-                    </button>
-                    <button className="flex items-center justify-center w-full p-2 border border-gray-600 rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-blue-700">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 32 32"
-                            className="w-5 h-5 fill-current"
-                        >
-                            <path d="M31.937 6.093c-1.177 0.516-2.437 0.871-3.765 1.032 1.355-0.813 2.391-2.099 2.885-3.631-1.271 0.74-2.677 1.276-4.172 1.579-1.192-1.276-2.896-2.079-4.787-2.079-3.625 0-6.563 2.937-6.563 6.557 0 0.521 0.063 1.021 0.172 1.495-5.453-0.255-10.287-2.875-13.52-6.833-0.568 0.964-0.891 2.084-0.891 3.303 0 2.281 1.161 4.281 2.916 5.457-1.073-0.031-2.083-0.328-2.968-0.817v0.079c0 3.181 2.26 5.833 5.26 6.437-0.547 0.145-1.131 0.229-1.724 0.229-0.421 0-0.823-0.041-1.224-0.115 0.844 2.604 3.26 4.5 6.14 4.557-2.239 1.755-5.077 2.801-8.135 2.801-0.521 0-1.041-0.025-1.563-0.088 2.917 1.86 6.36 2.948 10.079 2.948 12.067 0 18.661-9.995 18.661-18.651 0-0.276 0-0.557-0.021-0.839 1.287-0.917 2.401-2.079 3.281-3.396z"></path>
-                        </svg>
-                    </button>
-                </div>
+              <div className="w-full p-4 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
 
-                <p className="mt-8 text-xs font-light text-center text-gray-700">
-                    {" "}
-                    Don't have an account?{" "}
-                    <a
-                        href="#"
-                        className="font-medium text-blue-700 hover:underline"
-                    >
-                        Sign up
-                    </a>
-                </p>
-            </div>
-        </div>
-    );
+                  <h1 className="text-lg font-semibold text-center text-blue-700">
+                      Sign in
+                      <hr className='  border border-blue-700 w-14 font-bold ml-52 mt-2 '/>
+                  </h1>
+                  
+                  <form className="">
+                    <div className='mb-4'>
+                  <label class=" relative inline-flex px-14">
+                    <input className="block w-96 px-4 py-2 mt-2 text-black bg-white border  rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none focus:px-8" placeholder="Enter your email" type="email" name="email"/>
+                    <span class="absolute inset-y-0  flex p-3 items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M13 19c0-3.31 2.69-6 6-6c1.1 0 2.12.3 3 .81V6a2 2 0 0 0-2-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h9.09c-.05-.33-.09-.66-.09-1M4 8V6l8 5l8-5v2l-8 5l-8-5m16 14v-2h-4v-2h4v-2l3 3l-3 3Z"/></svg>
+                  </span>
+                  </label>
+                  </div>
+              
+                      <div className="mb-4">
+                      <label class=" relative inline-flex px-14">
+                    <input className="block w-96 px-4 focus:px-8 py-2 mt-2 text-black bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none  " placeholder="Enter your password" type="password" name="password"/>
+                    <span class="absolute inset-y-0  flex p-3 items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z"/></svg>
+                  </span>
+                  <span class="absolute inset-y-0  flex px-80 py-2 items-center ">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5s5 2.24 5 5s-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3s3-1.34 3-3s-1.34-3-3-3z"/></svg>
+                  </span>
+                  </label>
+                      </div>
+                      <div>                      <Link
+                          to="#"
+                          className="text-xs text-blue-700 hover:underline py-2 px-14"
+                      >
+                          Forget Password?
+                      </Link>
+                      </div>
+                      {/* <div className=" inline-flex py-4">
+                          <button className="w-40 px-8 py-2  text-white  bg-blue-700 rounded-md outline-none ">
+                             <Link to='/' className='text-white text-lg hover:text-white'>Login</Link> 
+                          </button>
+                          <button className="w-40 px-8  ml-10 text-white  bg-white border rounded-md outline-none ">
+                             <Link to='/' className='text-blue-700 text-lg hover:text-blue-700'>Sign Up</Link> 
+                          </button>
+                      </div> */}
+
+
+                  <div className=" inline-flex ">
+                  <div className="mb-4">
+                  <label class=" relative inline-flex px-14">
+                      <span class="absolute inset-y-0  ml-24 flex  items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z" className='text-white'/></svg>
+                  </span>
+                      <button className="h-8  w-40    text-white  bg-blue-700 rounded-md outline-none ">
+                             <Link to='/' className='text-white  text-lg mr-12 hover:text-white'>Login</Link> 
+                          </button>
+                  </label>
+                      </div>
+
+                      <div className="mb-4">
+                  <label class=" relative inline-flex">
+                      <span class="absolute inset-y-0  ml-24 flex  items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z" className='text-blue-700'/></svg>
+                  </span>
+                      <button className="  transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300 ...    h-8 w-40   text-white border bg-white rounded-md outline-none ">
+                             <Link to='/' className='text-blue-700 text-lg mr-12 hover:text-blue-700'>Sign Up</Link>
+                          </button>
+                  </label>
+                      </div>
+                  </div>
+                  </form>
+                  <div className="relative mb-4 flex items-center justify-center w-96 ml-14 mt-6 border border-t">
+                      <div className="absolute px-3 bg-white">Or</div>
+                  </div>
+                  
+                  <div className=" inline-flex">
+                  <div className="mb-1">
+                  <label class=" relative inline-flex px-14">
+                      <span class="absolute inset-y-0   px-2 flex  items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z" className='text-black'/></svg>
+                  </span>
+                      <button className="h-8  w-40   text-black  bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none ">
+                             <Link to='/' className='text-black  text-sm ml-4 px-1 hover:text-black'>Continue  Facebook</Link> 
+                          </button>
+                  </label>
+                      </div>
+
+                      <div className="mb-4">
+                  <label class=" relative inline-flex">
+                      <span class="absolute inset-y-0   px-2 flex  items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z" className='text-black'/></svg>
+                  </span>
+                      <button type='submit'  className="  h-8 w-40   text-black bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none ">
+                             <Link to='/' className='text-black  text-sm px-1 ml-4 hover:text-black'>Continue google</Link> 
+                          </button>
+                  </label>
+                      </div>
+                  </div>
+
+
+  
+
+              </div>
+          </div>
+
+      </BootstrapDialog>
+    </div>
+  );
 }

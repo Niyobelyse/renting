@@ -1,141 +1,219 @@
-import React from "react";
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import { styled } from '@mui/material/styles';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
 
 
-export default function Registration() {
-    return (
-        <div>
-            
-            <div className=" flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
-                <div className="flex flex-col items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 ">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-</svg>
 
-                    <a href="/">
-                        <h3 className="text-4xl font-bold text-blue-700">
-                            Create Account
-                        </h3>
-                    </a>
-                </div>
-                <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
-                    <form>
-                        <div>
-                            <label
-                                htmlFor="name"
-                                className="block text-sm font-medium text-gray-700 undefined"
-                            >
-                                Name
-                            </label>
-                            <div className="flex flex-col items-start">
-                                <input
-                                    type="text"
-                                    name="name"
-                                    className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                />
-                            </div>
-                        </div>
-                        <div className="mt-4">
-                            <label
-                                htmlFor="email"
-                                className="block text-sm font-medium text-gray-700 undefined"
-                            >
-                                Email
-                            </label>
-                            <div className="flex flex-col items-start">
-                                <input
-                                    type="email"
-                                    name="email"
-                                    className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                />
-                            </div>
-                        </div>
-                        <div className="mt-4">
-                            <label
-                                htmlFor="password"
-                                className="block text-sm font-medium text-gray-700 undefined"
-                            >
-                                Password
-                            </label>
-                            <div className="flex flex-col items-start">
-                                <input
-                                    type="password"
-                                    name="password"
-                                    className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                />
-                            </div>
-                        </div>
-                        <div className="mt-4">
-                            <label
-                                htmlFor="password_confirmation"
-                                className="block text-sm font-medium text-gray-700 undefined"
-                            >
-                                Confirm Password
-                            </label>
-                            <div className="flex flex-col items-start">
-                                <input
-                                    type="password"
-                                    name="password_confirmation"
-                                    className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                />
-                            </div>
-                        </div>
-                        <a
-                            href="#"
-                            className="text-xs text-blue-700 hover:underline"
-                        >
-                            Forget Password?
-                        </a>
-                        <div className="flex items-center mt-4">
-                            <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
-                                Register
-                            </button>
-                        </div>
-                    </form>
-                    <div className="mt-4 text-grey-600">
-                        Already have an account?{" "}
-                        <span>
-                            <a className="text-blue-700 hover:underline" href="#">
-                                Log in
-                            </a>
-                        </span>
-                    </div>
-                    <div className="flex items-center w-full my-4">
-                        <hr className="w-full" />
-                        <p className="px-3 ">OR</p>
-                        <hr className="w-full" />
-                    </div>
-                    <div className="my-6 space-y-2">
-                        <button
-                            aria-label="Login with Google"
-                            type="button"
-                            className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-blue-700"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 32 32"
-                                className="w-5 h-5 fill-current"
-                            >
-                                <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
-                            </svg>
-                            <p>Login with Google</p>
-                        </button>
-                        <button
-                            aria-label="Login with GitHub"
-                            role="button"
-                            className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-blue-700"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 32 32"
-                                className="w-5 h-5 fill-current"
-                            >
-                                <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"></path>
-                            </svg>
-                            <p>Login with GitHub</p>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialogContent-root': {
+    padding: theme.spacing(2),
+  },
+  '& .MuiDialogActions-root': {
+    padding: theme.spacing(2),
+  },
+}));
+
+function BootstrapDialogTitle(props) {
+  const { children, onClose, ...other } = props;
+
+  return (
+    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+      {children}
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            position: 'absolute',
+            left: 400,
+            top: 6,
+            color: (theme) => theme.palette.black,
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </DialogTitle>
+  );
 }
+
+BootstrapDialogTitle.propTypes = {
+  children: PropTypes.node,
+  onClose: PropTypes.func.isRequired,
+};
+
+export default function Signup() {
+
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  }
+
+
+
+  const [formData, setFormData] = useState({ firstname: '', secondname: '', email: '', password: '',confirmpassword:'' });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+    }
+  };
+  
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post('https://findrental-r84tg.ondigitalocean.app/api/auth/register/', formData);
+      console.log('Sign up successful');
+      alert('Sign up successful!');
+    } catch (error) {
+      console.error('Sign up failed:', error.message);
+      alert('Sign up failed');
+    }
+  };
+
+  return (
+    <div classname='py-4'>
+      <Link variant="outlined" onClick={handleClickOpen}>
+      <button type="button" class="text-white bg-blue-900 hover:bg-blue-800  font-medium rounded-lg text-sm px-3.5 py-2.5 text-center" >Sign Up</button>
+        
+      </Link>
+      <BootstrapDialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+        className='h-screen w-full mt-16'
+      >
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+  
+        </BootstrapDialogTitle>
+        <div className="relative   flex flex-col justify-center  overflow-hidden">
+              
+              <div className="w-full p-4 my-auto bg-white rounded-md shadow-xl lg:max-w-xl">
+
+                  <h1 className="text-lg  font-semibold text-center text-blue-700">
+                      Sign Up
+                      <hr className='  border border-blue-700 w-14 font-bold ml-52 mt-2 '/>
+                  </h1>
+                  
+                  <form>
+                  <div className='mb-2'>
+                  <label class=" relative inline-flex px-14">
+                    <input   className="block w-96 px-4 py-2  text-black bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none" placeholder="First name" type="text" name="firstname " required onChange={handleInputChange}/>
+                    <span class="absolute inset-y-0  flex p-3 items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8q0-1.65 1.175-2.825T12 4q1.65 0 2.825 1.175T16 8q0 1.65-1.175 2.825T12 12Zm-8 8v-2.8q0-.85.438-1.563T5.6 14.55q1.55-.775 3.15-1.163T12 13q1.65 0 3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20H4Z"/></svg>
+                  </span>
+                  </label>
+                  </div>
+              
+                  <div className='mb-2'>
+                  <label class=" relative inline-flex px-14">
+                    <input   className="block w-96 px-4 py-2  text-black bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none" placeholder="Second name" type="text" name="secondname" required onChange={handleInputChange}/>
+                    <span class="absolute inset-y-0  flex p-3 items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8q0-1.65 1.175-2.825T12 4q1.65 0 2.825 1.175T16 8q0 1.65-1.175 2.825T12 12Zm-8 8v-2.8q0-.85.438-1.563T5.6 14.55q1.55-.775 3.15-1.163T12 13q1.65 0 3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20H4Z"/></svg>
+                  </span>
+                  </label>
+                  </div>
+
+               
+
+                  <div className='mb-2'>
+                  <label class=" relative inline-flex px-14">
+                    <input className="block w-96 px-4 py-2 text-black bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none focus:px-8" placeholder="Enter your email" type="text" name="email" required onChange={handleInputChange}/>
+                    <span class="absolute inset-y-0  flex p-3 items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M13 19c0-3.31 2.69-6 6-6c1.1 0 2.12.3 3 .81V6a2 2 0 0 0-2-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h9.09c-.05-.33-.09-.66-.09-1M4 8V6l8 5l8-5v2l-8 5l-8-5m16 14v-2h-4v-2h4v-2l3 3l-3 3Z"/></svg>
+                  </span>
+                  </label>
+                  </div>
+                  <div className="mb-2">
+                      <label class=" relative inline-flex px-14">
+                    <input className="block w-96 px-4 focus:px-8 py-2 mt-2 text-black bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none  " placeholder="Enter your password" type="password" name="password" required onChange={handleInputChange}/>
+                    <span class="absolute inset-y-0  flex p-3 items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z"/></svg>
+                  </span>
+                  <span class="absolute inset-y-0  flex px-80 py-2 items-center ">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5s5 2.24 5 5s-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3s3-1.34 3-3s-1.34-3-3-3z"/></svg>
+                  </span>
+                  </label>
+                      </div>
+                  <div className="mb-2">
+                      <label class=" relative inline-flex px-14">
+                    <input className="block w-96 px-4 focus:px-8 py-2 mt-2 text-black bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none  " placeholder="Enter your password" type="password" name="confirmpassword" required onChange={handleInputChange}/>
+                    <span class="absolute inset-y-0  flex p-3 items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z"/></svg>
+                  </span>
+                  <span class="absolute inset-y-0  flex px-80 py-2 items-center ">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5s5 2.24 5 5s-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3s3-1.34 3-3s-1.34-3-3-3z"/></svg>
+                  </span>
+                  </label>
+                      </div>
+                      <div> 
+                        <Link
+                          to="#"
+                          className="text-xs text-blue-700 hover:underline py-2 px-14"
+                      >
+                          Forget Password?
+                      </Link>
+                      </div>
+
+                  <div className=" inline-flex">
+                    <div className="mb-2">
+                    <label class=" relative inline-flex px-14">
+                      <span class="absolute inset-y-0  ml-28 flex  items-center ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z" className='text-white'/></svg>
+                      </span>
+                      <button className="h-8  w-40   text-white  bg-blue-700 rounded-md outline-none" type='submit' onClick={handleSubmit}>
+                        Signup
+                      </button>
+                    </label>
+                        </div>
+
+                        <div className="mb-2">
+                    <label class=" relative inline-flex">
+                        <span class="absolute inset-y-0  ml-24 flex  items-center ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z" className='text-blue-700'/></svg>
+                    </span>
+                        <button className="  h-8 w-40   text-white border bg-white rounded-md outline-none" type='submit'>
+                              <Link to='/' className='text-blue-700 text-lg mr-12 hover:text-blue-700'>Login</Link>
+                        </button>
+                    </label>
+                        </div>
+                  </div>
+                  </form>
+              </div>
+          </div>
+
+      </BootstrapDialog>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

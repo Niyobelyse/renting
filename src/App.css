@@ -1,22 +1,29 @@
+option{
+    background-color: none;
+}
 
-
-/* Bodyimage */
+/* Bodyimage of homepage and contact page */
 .Bodyimage{
-    background-image: url('..//public/Capture1.PNG');
-    height: 400px;
+    
+    background:linear-gradient(180deg,rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('..//public/Capture1.PNG');
+    
+    height: 439px;
     background-repeat: no-repeat;
     background-size: cover;
+    opacity: 1.5;
+    background-position: center;
+    
     
 
 }
-.Bodyimage img{
+/* .Bodyimage img{
   background-repeat: no-repeat;
   background-size: cover;
   
 
 
   
-}
+} */
 /* footer */
 .spancolor{
     color: #303030;
@@ -30,3 +37,21 @@
 .links{
     color: #575757;
 }
+
+/* contact */
+.Bodyimagecontact{
+    
+    background:linear-gradient(180deg,rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('..//public/Capture1.PNG');
+    background-repeat: no-repeat;
+    height: 280px;
+    background-size: cover;
+    background-position: center;
+    
+    
+    
+
+}
+
+
+
+
