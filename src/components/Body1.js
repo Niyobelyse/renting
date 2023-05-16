@@ -24,12 +24,12 @@ const Home = () => {
      <div  class="animate__animated animate__bounce animate__repeat-2 text-center pt-48  font-bold text-4xl text-white">Find your dream Rental in Kigali</div>
      <div className=' border-r-2 border-l-2 bg-white border-b-2 border-gray-200 mt-16 inline-flex px-12 w-5/5 mx-24 h-24  mb-8 rounded-lg '>
         
-        <div className=' px-2 py-4 mt-2'><span className='text-black font-bold'>Location</span><Selectarea className='px-4'/></div>
-        <div className='px-4 py-4 mt-2'><span className='text-black font-bold'>Type of property</span><Properttype/></div>
-        <div className='px-2 py-4 mt-2'><span className='text-black font-bold'>Bedrooms</span><Bedrooms/></div>
-        <div className='px-2 py-4 mt-1'><span className='text-black font-bold'>Bathrooms</span><Bathrooms/></div>
-        <div className='px-4 py-4 mt-2'><span className='text-black font-bold'>Pricerange</span><Pricerange/></div>
-        <div className='mt-1 py-4 '><label class=" relative inline-flex">
+        <div className=' px-8 py-4 mt-2'><span className='text-black font-bold'>Location</span><Selectarea className='px-4'/></div>
+        <div className='px-10 py-4 mt-2'><span className='text-black font-bold'>Type of property</span><Properttype/></div>
+        <div className='px-8 py-4 mt-2'><span className='text-black font-bold'>Bedrooms</span><Bedrooms/></div>
+        <div className='px-8 py-4 mt-1'><span className='text-black font-bold'>Bathrooms</span><Bathrooms/></div>
+        <div className='px-10 py-4 mt-2'><span className='text-black font-bold'>Pricerange</span><Pricerange/></div>
+        <div className='px-8 mt-1 py-4 '><label class=" relative inline-flex">
   
   <input class=" bg-blue-900 w-28 rounded-md  py-2 placeholder:text-white shadow-sm outline-none placeholder:px-2 h-12" placeholder="Search" type="text" name="search"/>
   <span class="absolute inset-y-0  text-white flex items-center px-20">
