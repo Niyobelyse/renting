@@ -48,7 +48,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function SignIN() {
+export default function Managerlogin() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -90,12 +90,12 @@ export default function SignIN() {
   return (
     <div>
       <span variant="outlined" onClick={handleClickOpen}>
-        <span
-          
-          class="text-black  font-medium rounded-lg text-lg px-5 py-2.5 text-center "
+        <button
+          type="button"
+          class="text-black   font-medium rounded-lg text-lg px-5 py-2.5 text-center "
         >
-          Landlord
-        </span>
+         Manager
+        </button>
       </span>
       <BootstrapDialog
         onClose={handleClose}

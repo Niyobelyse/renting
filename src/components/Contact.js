@@ -1,8 +1,38 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { FaPhoneAlt } from "react-icons/fa";
+import { useState } from "react";
+import axios from "axios";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post(
+        "https://findrental-r84tg.ondigitalocean.app/api/rental/get_in_touch/",
+        formData
+      );
+      console.log("message successful");
+      alert("message successful!");
+    } catch (error) {
+      console.error("message failed",error);
+      alert("message failed");
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -21,27 +51,31 @@ const Contact = () => {
                       className="block w-28 px-2 py-1 mt-2 text-black bg-white border rounded-md placeholder:px-1 placeholder:py-2 placeholder:text-black  outline-none "
                       placeholder="First name"
                       type="text"
-                      name="search"
+                      name="first_name"
+                      onChange={handleInputChange}
                     />
                     <input
                       className="block w-28 px-2 ml-2 py-1 mt-2 text-black bg-white border rounded-md placeholder:px-1 placeholder:py-2 placeholder:text-black  outline-none "
                       placeholder="Last name"
                       type="text"
-                      name="search"
+                      name="last_name"
+                      onChange={handleInputChange}
                     />
                   </div>
                   <div className="inline-flex mt-4 px-4">
                     <input
                       className="block w-28 px-2 py-1  mt-2 text-black bg-white border rounded-md placeholder:px-1 placeholder:py-2 placeholder:text-black  outline-none "
-                      placeholder="Subject"
-                      type="text"
-                      name="search"
+                      placeholder="Email"
+                      type="email"
+                      name="email"
+                      onChange={handleInputChange}
                     />
                     <input
                       className="block w-28 px-2 py-1  mt-2 ml-2 text-black bg-white border rounded-md placeholder:px-1 placeholder:py-2 placeholder:text-black  outline-none "
-                      placeholder="Email"
+                      placeholder="Subject"
                       type="text"
-                      name="search"
+                      name="subject"
+                      onChange={handleInputChange}
                     />
                   </div>
                   <div>
@@ -51,15 +85,19 @@ const Contact = () => {
                       cols="23"
                       placeholder="Type your message here"
                       className="mt-8 placeholder:text-black   ml-4 text-black  text-lg border outline-none"
+                      name="message"
+                      type="text"
                     ></textarea>
                     <button
                       type="submit"
                       className="w-60  mx-4 h-12 mt-4 rounded-sm bg-blue-600 text-white"
+                      onClick={handleSubmit}
                     >
                       Send
                     </button>
                   </div>
                 </div>
+
                 <div className="d-flex  w-3/4">
                   <div className="border border  h-24 w-12/12 my-6 d-flex">
                     <h1 className="text-lg font-bold text-black px-2 mt-2">

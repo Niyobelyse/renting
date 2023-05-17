@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import Nav1 from './Nav1';
-import SignIN from './Login';
 import Signup from './Signup';
-import Drower from './Drower'
+import Drower from './Drower';
+import Loginas from './Loginas';
 
 
 
@@ -42,7 +42,7 @@ const Navbar = () => {
         <Signup className=''/>
         </li>
         <li>
-         <SignIN/>
+         <Loginas/>
         </li>
 
       </ul>
