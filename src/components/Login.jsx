@@ -75,7 +75,9 @@ export default function SignIN() {
           email,
           password
         })
-      });
+      }
+     
+);
 
       if (!response.ok) {
         throw new Error('Invalid credentials');
