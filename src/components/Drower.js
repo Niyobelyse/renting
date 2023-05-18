@@ -37,7 +37,7 @@ export default function Drower() {
        className='mt-4'
       >
     <div className=' px-2'>
-        <div className='px-1'><Link to='/allproperties'>All</Link></div>
+        <div className='px-1'><Link to='/rentallists'>All</Link></div>
         <div className='px-1'>Apartment</div>
         <div className='px-1'>Home house</div>
         <div className='px-1'>Office</div>

@@ -8,8 +8,8 @@ import Dashbord from './components/Dashbord';
 import Contact from './components/Contact';
 import Footer2 from './components/Footer2';
 import Rentallists from './components/Rentallists';
+import Form from './components/Form';
 
-import Allproperties from './components/Allproperties';
 import Layout from './Shared/Layout';
 import Newrental from './components/Newrental';
 
@@ -34,7 +34,8 @@ function App() {
         <Route path="dashbord" element={ <Dashbord/> } />
         <Route path="footer2" element={ <Footer2/> } />
         <Route path="rentallists" element={ <Rentallists/> } />
-        <Route path="allproperties" element={ <Allproperties/> } />
+        <Route path="form" element={ <Form/> } />
+        
        
         <Route path='dashbordlayout' element={<Layout/>}>
         

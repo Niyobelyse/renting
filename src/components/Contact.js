@@ -39,12 +39,13 @@ const Contact = () => {
 
       <div className="Bodyimagecontact d-flex">
         <div className="py-16">
-          <h3 className="text-white text-center mt-4">
+          <h3 className="text-white text-center mt-14">
             We want to hear from you, Get In Touch with us
           </h3>
           <div className="bg-blue-900 mx-72 w-3/5 rounded-lg">
             <div className="px-8 py-8">
               <div className="text-sm w-4/4  mx-2 placeholder:text-sm  bg-white rounded-lg grid grid-cols-2  ">
+               
                 <div className=" mx-12">
                   <div className="inline-flex mt-4 px-4">
                     <input
@@ -86,17 +87,18 @@ const Contact = () => {
                       placeholder="Type your message here"
                       className="mt-8 placeholder:text-black   ml-4 text-black  text-lg border outline-none"
                       name="message"
-                      type="text"
+                      
                     ></textarea>
                     <button
                       type="submit"
                       className="w-60  mx-4 h-12 mt-4 rounded-sm bg-blue-600 text-white"
-                      onClick={handleSubmit}
+                     onClick={handleSubmit} 
                     >
-                      Send
+                      Send message
                     </button>
                   </div>
                 </div>
+                
 
                 <div className="d-flex  w-3/4">
                   <div className="border border  h-24 w-12/12 my-6 d-flex">

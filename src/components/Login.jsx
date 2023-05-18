@@ -7,14 +7,14 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
   },
   "& .MuiDialogActions-root": {
-    padding: theme.spacing(1),
+    padding: theme.spacing(2),
   },
 }));
 
@@ -30,9 +30,8 @@ function BootstrapDialogTitle(props) {
           onClick={onClose}
           sx={{
             position: "absolute",
-            left: 420,
-            top: 8,
-
+            left: 400,
+            top: 6,
             color: (theme) => theme.palette.black,
           }}
         >
@@ -50,13 +49,13 @@ BootstrapDialogTitle.propTypes = {
 
 export default function SignIN() {
   const [open, setOpen] = React.useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -66,7 +65,7 @@ export default function SignIN() {
     event.preventDefault();
 
     try {
-      const response = await fetch('https://findrental-r84tg.ondigitalocean.app/api/auth/login/',{
+      const response = await fetch('https://findrental-r84tg.ondigitalocean.app/api/auth/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -75,26 +74,23 @@ export default function SignIN() {
           email,
           password
         })
-      }
-     
-);
+      });
 
       if (!response.ok) {
         throw new Error('Invalid credentials');
       }
 
-      navigate('/dashbordlayout'); // navigate to page
+      navigate('/dashbordlayout'); // navigate to health_home page
     } catch (error) {
       setError(error.message);
     }
-  };
-
+  }
   return (
-    <div>
+    <div classN ame="">
       <span variant="outlined" onClick={handleClickOpen}>
-        <span
-          
-          class="text-black  font-medium rounded-lg text-lg px-5 py-2.5 text-center "
+      <span
+         
+          class="text-black   font-medium rounded-lg text-lg px-5 py-2.5 text-center "
         >
           Landlord
         </span>
@@ -103,27 +99,30 @@ export default function SignIN() {
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
-        className="h-screen w-full mt-24"
+        className="h-screen w-full mt-16"
       >
         <BootstrapDialogTitle
           id="customized-dialog-title"
           onClose={handleClose}
         ></BootstrapDialogTitle>
-        <div className="relative flex flex-col justify-center  overflow-hidden">
-          <div className="w-full p-4 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
-            <h1 className="text-lg font-semibold text-center text-blue-700">
-              Sign in
+        <div className="relative   flex flex-col justify-center  overflow-hidden">
+          <div className="w-full p-4 my-auto bg-white rounded-md shadow-xl lg:max-w-xl">
+          <h1 className="text-lg font-semibold text-center text-blue-700">
+              Sign In
               <hr className="  border border-blue-700 w-14 font-bold ml-52 mt-2 " />
             </h1>
 
             <form onSubmit={handleSubmit}>
-              <div className="mb-4">
+
+
+              <div className="mb-2">
                 <label class=" relative inline-flex px-14">
                   <input
-                    className="block w-96 px-4 py-2 mt-2 text-black bg-white border  rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none focus:px-8"
+                    className="block w-96 px-4 py-2 text-black bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none focus:px-8"
                     placeholder="Enter your email"
-                    type="email"
+                    type="text"
                     name="email"
+                    required
                     value={email} onChange={(event) => setEmail(event.target.value)}
                   />
                   <span class="absolute inset-y-0  flex p-3 items-center ">
@@ -141,14 +140,14 @@ export default function SignIN() {
                   </span>
                 </label>
               </div>
-
-              <div className="mb-4">
+              <div className="mb-2">
                 <label class=" relative inline-flex px-14">
                   <input
                     className="block w-96 px-4 focus:px-8 py-2 mt-2 text-black bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none  "
                     placeholder="Enter your password"
                     type="password"
                     name="password"
+                    required
                     value={password} onChange={(event) => setPassword(event.target.value)}
                   />
                   <span class="absolute inset-y-0  flex p-3 items-center ">
@@ -181,7 +180,6 @@ export default function SignIN() {
               </div>
               {error && <div className='text-red-700 text-center my-4'>{error}</div>}
               <div>
-                {" "}
                 <Link
                   to="#"
                   className="text-xs text-blue-700 hover:underline py-2 px-14"
@@ -190,11 +188,10 @@ export default function SignIN() {
                 </Link>
               </div>
 
-
-              <div className=" inline-flex ">
-                <div className="mb-4">
+              <div className=" inline-flex">
+                <div className="mb-2">
                   <label class=" relative inline-flex px-14">
-                    <span class="absolute inset-y-0  ml-24 flex  items-center ">
+                    <span class="absolute inset-y-0  ml-28 flex  items-center ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -208,15 +205,16 @@ export default function SignIN() {
                         />
                       </svg>
                     </span>
-                    <button type="submit" className="h-8  w-40    text-white  bg-blue-700 rounded-md outline-none ">
-                      <span className="text-white  text-lg mr-12 hover:text-white">
-                        Login
-                      </span>
+                    <button
+                      className="h-8  w-40   text-white  bg-blue-700 rounded-md outline-none"
+                      type="submit"
+                    >
+                      Login
                     </button>
                   </label>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-2">
                   <label class=" relative inline-flex">
                     <span class="absolute inset-y-0  ml-24 flex  items-center ">
                       <svg
@@ -232,80 +230,16 @@ export default function SignIN() {
                         />
                       </svg>
                     </span>
-                    <button className="  transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300 ...    h-8 w-40   text-white border bg-white rounded-md outline-none ">
-                      <Link
-                        to="/"
-                        className="text-blue-700 text-lg mr-12 hover:text-blue-700"
-                      >
-                        Sign Up
-                      </Link>
+                    <button
+                      className="  h-8 w-40   text-white border bg-white rounded-md outline-none"
+                      type="submit"
+                    >
+                    Sign up
                     </button>
                   </label>
                 </div>
               </div>
             </form>
-            <div className="relative mb-4 flex items-center justify-center w-96 ml-14 mt-6 border border-t">
-              <div className="absolute px-3 bg-white">Or</div>
-            </div>
-
-            <div className=" inline-flex">
-              <div className="mb-1">
-                <label class=" relative inline-flex px-14">
-                  <span class="absolute inset-y-0   px-2 flex  items-center ">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z"
-                        className="text-black"
-                      />
-                    </svg>
-                  </span>
-                  <button className="h-8  w-40   text-black  bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none ">
-                    <Link
-                      to="/"
-                      className="text-black  text-sm ml-4 px-1 hover:text-black"
-                    >
-                      Continue Facebook
-                    </Link>
-                  </button>
-                </label>
-              </div>
-
-              <div className="mb-4">
-                <label class=" relative inline-flex">
-                  <span class="absolute inset-y-0   px-2 flex  items-center ">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z"
-                        className="text-black"
-                      />
-                    </svg>
-                  </span>
-                  <button
-                    type="submit"
-                    className="  h-8 w-40   text-black bg-white border rounded-md placeholder:px-8 placeholder:py-2 placeholder:text-black  outline-none "
-                  >
-                    <Link
-                      to="/"
-                      className="text-black  text-sm px-1 ml-4 hover:text-black"
-                    >
-                      Continue google
-                    </Link>
-                  </button>
-                </label>
-              </div>
-            </div>
           </div>
         </div>
       </BootstrapDialog>
