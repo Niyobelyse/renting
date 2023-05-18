@@ -4,7 +4,7 @@ import { FaBath, FaBed } from "react-icons/fa";
 function PropertyCard({ item }) {
   return (
     <>
-      <div className="max-w-1xl px-5 bg-white  rounded-lg dark:border-gray-700 mb-4">
+      <div className="max-w-1xl px-5 bg-white  rounded-lg dark:border-gray-700 mb-14">
         <Link to="#">
           <img
             className="rounded-t-lg w-full h-60"

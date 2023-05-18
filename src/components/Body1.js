@@ -7,6 +7,7 @@ import Bedrooms from "./Bedrooms";
 import Bathrooms from "./Bathrooms";
 import Pricerange from "./Pricerange";
 import PropertyContainer from "./PropertyContainer";
+import Testimonial from "./Testimonial"
 
 const Home = () => {
   return (
@@ -64,114 +65,7 @@ const Home = () => {
 
       <PropertyContainer />
 
-      <div className="text-4xl font-bold text-center py-3 mr-24">
-        Testmonials
-      </div>
-      <div className="text-4xl font-bold text-center py-3 mr-24">
-        Our happy clients
-      </div>
-      <div className="grid grid-cols-3 px-24 mt-10">
-        <div className="w-5/5 mx-8 bg-white border-r-2 border-l-2 border-b-2 border-gray-200">
-          <div className="">
-            <div className="px-28 py-2">
-              <img
-                src="../testmonial1.png"
-                className="text-center w-16 rounded-full h-16 bg-gray-200"
-                alt="testmonial1"
-              />
-            </div>
-            <div className="text-center py-2">Dorcelle Uwamaliya</div>
-            <div className="inline-flex ml-28">
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-            </div>
-          </div>
-          <div className="px-3 py-2">
-            Best Real Estate Company i have ever Deal with. very Professional ,
-            Experienced and Helpful Agent. Highly Recommended{" "}
-          </div>
-        </div>
-        <div className="w-5/5  mx-8  bg-white border-r-2 border-l-2 border-b-2 border-gray-200">
-          <div>
-            <div className="px-28 py-2">
-              <img
-                src="../testmonial1.png"
-                className="text-center w-16 rounded-full h-16 bg-gray-200"
-                alt="testmonial1"
-              />
-            </div>
-            <div className="text-center py-2">Dorcelle Uwamaliya</div>
-            <div className="inline-flex ml-28">
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-            </div>
-          </div>
-          <div className="px-3 py-2">
-            Best Real Estate Company i have ever Deal with. very Professional ,
-            Experienced and Helpful Agent. Highly Recommended{" "}
-          </div>
-        </div>
-        <div className="w-5/5  mx-8  bg-white border-r-2 border-l-2 border-b-2 border-gray-200">
-          <div>
-            <div className="px-28 py-2">
-              <img
-                src="../testmonial1.png"
-                className="text-center w-16 rounded-full h-16 bg-gray-200"
-                alt="testmonial1"
-              />
-            </div>
-            <div className="text-center py-2">Dorcelle Uwamaliya</div>
-            <div className="inline-flex ml-28">
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-              <FaStar className="px-1" />
-            </div>
-          </div>
-          <div className="px-3 py-2">
-            Best Real Estate Company i have ever Deal with. very Professional ,
-            Experienced and Helpful Agent. Highly Recommended{" "}
-          </div>
-        </div>
-      </div>
-
-      <div className=" bg-blue-900  w-5/5 mx-32 h-60 mt-14 mb-6 justify-center">
-        <h3 className="font-bold text-white text-lg text-center py-4">
-          {" "}
-          would you like to share your feedback?
-        </h3>
-        <div className="mx-72">
-          <input
-            type="text"
-            placeholder="Type your message here..."
-            className=" mb-2 placeholder:text-black w-96 px-2 rounded-md py-4 bg-white outline-none "
-          />
-          <br></br>
-          <label class=" relative inline-flex">
-            <input
-              class="mb-2 bg-white w-96 rounded-md py-4 px-2 shadow-sm outline-none placeholder:text-black"
-              placeholder="Your Email"
-              type="text"
-              name="search"
-            />
-            <span class="absolute inset-y-0  flex items-center px-20">
-              <button
-                type="submit"
-                className="ml-52 mb-1 text-white text-lg rounded-sm  w-20 h-8 bg-blue-900"
-              >
-                Send
-              </button>
-            </span>
-          </label>
-        </div>
-      </div>
+      <Testimonial />
     </>
   );
 };
