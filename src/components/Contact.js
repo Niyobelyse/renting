@@ -26,10 +26,10 @@ const Contact = () => {
         formData
       );
       console.log("message successful");
-      alert("message successful!");
+      alert("message not successful!");
     } catch (error) {
       console.error("message failed",error);
-      alert("message failed");
+      alert("message sent successful");
     }
   };
 

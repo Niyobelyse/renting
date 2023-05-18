@@ -10,7 +10,7 @@ function TestimonialForm() {
             <div className="mx-72">
               <label
                 for="full_name"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                class="block mb-2 text-sm  text-white text-2xl dark:text-white"
               >
                 Your Names
               </label>
@@ -22,7 +22,7 @@ function TestimonialForm() {
               />
               <label
                 for="message"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                class="block mb-2 text-sm  text-white text-2xl dark:text-white"
               >
                 Your message
               </label>
