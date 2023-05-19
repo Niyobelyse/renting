@@ -60,6 +60,7 @@ export default function Signup() {
     first_name: "",
     last_name: "",
     email: "",
+    is_landlord: true,
     password: "",
     password_confirmation: "",
   });
@@ -84,10 +85,11 @@ export default function Signup() {
     }
   };
 
+  const styles = { visibility: "hidden" };
   return (
-    <div classN ame="">
+    <div className="">
       <span variant="outlined" onClick={handleClickOpen}>
-      <button
+        <button
           type="button"
           class="text-white bg-blue-900 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center "
         >
@@ -104,9 +106,9 @@ export default function Signup() {
           id="customized-dialog-title"
           onClose={handleClose}
         ></BootstrapDialogTitle>
-        <div className="relative   flex flex-col justify-center  overflow-hidden">
-          <div className="w-full p-4 my-auto bg-white rounded-md shadow-xl lg:max-w-xl">
-          <h1 className="text-lg font-semibold text-center text-blue-700">
+        <div className="relative flex flex-col justify-center  overflow-hidden">
+          <div className="w-full p-4 my-auto bg-white rounded-md shadow-xl lg:max-w-xl py-12">
+            <h1 className="text-lg font-semibold text-center text-blue-700">
               Sign Up
               <hr className="  border border-blue-700 w-14 font-bold ml-52 mt-2 " />
             </h1>
@@ -265,6 +267,15 @@ export default function Signup() {
                   </span>
                 </label>
               </div>
+
+              <input
+                type="checkbox"
+                id="is_landlord"
+                name="is_landlord"
+                checked={formData}
+                onChange={handleInputChange}
+                style={styles}
+              />
               <div>
                 <Link
                   to="#"
@@ -296,31 +307,6 @@ export default function Signup() {
                       type="submit"
                     >
                       Signup
-                    </button>
-                  </label>
-                </div>
-
-                <div className="mb-2">
-                  <label class=" relative inline-flex">
-                    <span class="absolute inset-y-0  ml-24 flex  items-center ">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M8.5 2C6 2 4 4 4 6.5V7c-1.11 0-2 .89-2 2v9c0 1.11.89 2 2 2h4.72c1.46 1.29 3.34 2 5.28 2a8 8 0 0 0 8-8a8 8 0 0 0-8-8c-.34 0-.68.03-1 .08C12.76 3.77 10.82 2 8.5 2m0 2A2.5 2.5 0 0 1 11 6.5V7H6v-.5A2.5 2.5 0 0 1 8.5 4M14 8a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m-1 2v5l3.64 2.19l.78-1.29l-2.92-1.75V10H13Z"
-                          className="text-blue-700"
-                        />
-                      </svg>
-                    </span>
-                    <button
-                      className="  h-8 w-40   text-white border bg-white rounded-md outline-none"
-                      type="submit"
-                    >
-                      Login
                     </button>
                   </label>
                 </div>

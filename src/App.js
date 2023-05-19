@@ -12,6 +12,9 @@ import Form from './components/Form';
 
 import Layout from './Shared/Layout';
 import Newrental from './components/Newrental';
+import Managerlayout from './Shared/Managerlayout';
+import Managerdashbord from './components/Managerdashbord';
+import Landlordaccount from './components/Landlordaccount';
 
 
 
@@ -44,6 +47,13 @@ function App() {
               <Route path='new' element={<Newrental />}></Route>
               
         </Route>
+        <Route path='managerlayout' element={<Managerlayout/>}>
+        
+             
+        <Route index element={<Managerdashbord />}></Route>
+        <Route path='Landlordaccount' element={<Landlordaccount/>}></Route>
+        
+       </Route>
 
 </Routes>
 

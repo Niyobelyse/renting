@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 function TestimonialCard({ testimonial }) {
   return (
     <>
-      <div className="w-5/5  mx-8 py-4 bg-white border-r-2 border-l-2 border-b-2 border-gray-200">
+      <div className="w-5/5  mx-8 py-4 bg-white border mb-8 border-gray-200">
         <div>
           <div className="px-28 py-2">
             <img
